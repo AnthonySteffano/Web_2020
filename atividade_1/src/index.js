@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import OlaMundo from './components/questao1/OlaMundo'
 
-ReactDOM.render(
-<h1>Hello, world!</h1>,
-  document.getElementById('root')
-)
+const root = document.getElementById('root')
+ReactDOM.render(<OlaMundo/>,root)
+
