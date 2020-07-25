@@ -1,10 +1,13 @@
 import React from 'react'
-import PropsFilho from './PropsFilho'
 
-export default (props)=>{
+
+export default function Pai (props){
     return(
         <div>
-            <PropsFilho nome='Anthony Steffano Moreira Martins' curso='Sistemas de informação' cidade = 'Caucaia'/>
+            <h3>{props.nome}</h3>
+            <h3>{props.curso}</h3>
+            <h3>{props.cidade}</h3>
+
             
         </div>
     )

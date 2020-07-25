@@ -1,26 +1,20 @@
 import React from 'react'
 
-//import Dados from './components/questao1/Dados'
-//import DadosClasse from './components/questao2/DadosClasse'
-import PropsPai from './components/questao3/PropsPai'
-
+import Dados from './components/questao1/Dados'
+import DadosClasse from './components/questao2/DadosClasse'
+import PropsFilho from './components/questao3/PropsFilho'
+import Ultima from './components/questao4/PropsPai'
 function App(){
     return (
         <div>
-    
-        <PropsPai/>
+        {/* <Dados/>
+        <DadosClasse/>
+        <PropsFilho/> */}
+        <Ultima/>
         </div>
     )
 }
 
-// class App extends Component{
-//     render(){
-//         return(
-//             <div>
-//                 <DadosClasse/>
-//             </div>
-//         )
-//     }
-// }
+
 
 export default App

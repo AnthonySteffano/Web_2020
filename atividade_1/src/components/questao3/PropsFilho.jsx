@@ -1,11 +1,10 @@
 import React from 'react'
+import PropsPai from './PropsPai'
 
-export default (props)=>{
+export default function PropsFilho(){
     return(
         <div>
-            <h2>{props.nome}</h2>
-            <h2>{props.curso}</h2>
-            <h2>{props.cidade}</h2>
+            <PropsPai nome = "Anthony" curso ="Sistemas de informação" cidade = "Caucaia"/>
         </div>
     )
 }
