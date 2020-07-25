@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import OlaMundo from './components/questao1/OlaMundo'
+import Dados from './components/questao1/Dados'
 
 const root = document.getElementById('root')
-ReactDOM.render(<OlaMundo/>,root)
+ReactDOM.render(<Dados/>,root)
 
