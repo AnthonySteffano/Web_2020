@@ -1,9 +1,10 @@
 import React from 'react'
 
 //Versão2
-export default()=>
+export default(props)=>
 <div>
     <h2>Desenvolvimento de Software para WEB - SI versao 2</h2>
+    <h5>Nome: {props.nome} <br/>Idade:{props.idade}</h5>
 </div>
 
 
