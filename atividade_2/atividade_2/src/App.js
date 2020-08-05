@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './App.css';
 
 import Q01 from './components/questao1/Arena'
@@ -13,8 +14,6 @@ function App() {
     <Q01/>
     <Q03/>
     <Q04/>
-   
-      
     </div>
   )
 }

@@ -11,6 +11,7 @@ export default function Arena(){
             <Hero name="Luke Skywalker" img={ImgHero}/>
             <Enemy name="Darth vader" img={ImgEnemy}/>
             
+            
         </div>
     )
 }
