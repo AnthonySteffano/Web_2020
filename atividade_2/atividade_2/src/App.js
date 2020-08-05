@@ -4,7 +4,7 @@ import './App.css';
 
 import Q01 from './components/questao1/Arena'
 
-import Q03 from './components/questao3/Inicio'
+import Q03 from './components/questao3/inicio'
 
 import Q04 from './components/questao4/Inicio'
 
