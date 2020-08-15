@@ -11,6 +11,12 @@
       "curso": "SI",
       "capacidade": "40",
       "id": 2
+    },
+    {
+      "nome": "teste",
+      "curso": "teste",
+      "capacidade": "23",
+      "id": 3
     }
   ]
 }
