@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 export default class Create extends Component{
 
@@ -27,8 +28,29 @@ export default class Create extends Component{
     }
     //e de evento
     onSubmit(e){
-        e.preventDefault()//impede que o browser faça o reload, perdendo assim a informação
-        console.log('Nome:'+this.state.nome+ ' Curso: '+this.state.curso+' IRA: '+this.state.ira)
+        e.preventDefault()
+        //impede que o browser faça o reload, perdendo assim a informação
+        // console.log('Nome:'+this.state.nome+ ' Curso: '+this.state.curso+' IRA: '+this.state.ira)
+
+        const novoEstudante ={ nome: this.state.nome,
+                               curso:this.state.curso,
+                               ira:this.state.ira}
+            
+            axios.post('http://localhost:3001/estudantes',novoEstudante)
+            .then(
+                (res)=>{
+                    console.log('Estudante inserido com sucesso.')
+                }
+            )
+            .catch(
+                (error)=>{
+                    console.log(error)
+                }
+            )
+
+            //quando quero mandar algo para o servidor, faço com o post, pra onde vou mandar a url e o que vou mandar, o obj.
+            //Se deu certo acessar, ele entra no then, caso deu erro vai no catch
+
         this.setState({nome:'', curso: '' ,ira:''})
     }
 

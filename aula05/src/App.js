@@ -13,8 +13,10 @@ export default class App extends Component{
     return(
       <Router>
         <div className='container'>
+
           <nav className = 'navbar navbar-expand-lg navbar-light bg-light'>
-            <Link to={'/'} className='navbar-brand'>CRUD</Link>
+            
+            <Link to={'/'} className='navbar-brand'>Menu</Link>
             <div className='collapse navbar-collapse' id='navbarSupportedContent'>
               <ul className='navbar-nav mr-auto'>
                 <li>

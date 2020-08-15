@@ -1,31 +1,16 @@
 {
-  "estudantes": [
+  "disciplina": [
     {
       "id": 1,
-      "nome": "Jefferson",
+      "nome": "ES",
       "curso": "SI",
-      "IRA": 9
+      "Capacidade": 54
     },
     {
-      "id": 2,
-      "nome": "Thomas",
+      "nome": "POO",
       "curso": "SI",
-      "IRA": 7.5
-    },
-    {
-      "nome": "Anthony",
-      "curso": "SI",
-      "id": 3
-    },
-    {
-      "nome": "ze",
-      "curso": "si",
-      "id": 4
-    },
-    {
-      "nome": "fulano",
-      "curso": "eng. computacao",
-      "id": 5
+      "capacidade": "40",
+      "id": 2
     }
   ]
 }

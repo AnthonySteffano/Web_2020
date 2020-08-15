@@ -1,0 +1,28 @@
+{
+  "estudantes": [
+    {
+      "id": 1,
+      "nome": "Anthony",
+      "curso": "Sistemas de informação",
+      "IRA": 8
+    },
+    {
+      "id": 2,
+      "nome": "Moreira",
+      "curso": "Engenharia de Computação",
+      "IRA": 9
+    },
+    {
+      "nome": "José",
+      "curso": "Redes",
+      "ira": "7",
+      "id": 3
+    },
+    {
+      "nome": "Pedro",
+      "curso": "Si",
+      "ira": "5",
+      "id": 4
+    }
+  ]
+}
