@@ -5,12 +5,6 @@
       "curso": "SI",
       "capacidade": "50",
       "id": 1
-    },
-    {
-      "nome": "WEB",
-      "curso": "ES",
-      "capacidade": "32",
-      "id": 2
     }
   ]
 }

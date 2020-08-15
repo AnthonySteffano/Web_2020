@@ -6,6 +6,7 @@ export default class List extends Component {
     constructor(props) {
         super(props)
         this.state = { discplinas: [] }
+        this.apagarElementoPorId = this.apagarElementoPorId.bind(this)
 
     }
 
@@ -25,9 +26,19 @@ export default class List extends Component {
         if (!this.state.discplinas) return
         return this.state.discplinas.map(
             (dis, i) => {
-                return <TableRow disciplina={dis} key={i} />;
+                return <TableRow disciplina={dis} key={i} apagarElementoPorId={this.apagarElementoPorId}  />
             }
         )
+    }
+
+    apagarElementoPorId(id){
+        let tempDisciplina = this.setState.discplinas
+        for(let i=0;i<tempDisciplina.length;i++){
+            if(tempDisciplina[i].id === id){
+                tempDisciplina.splice(i,1)
+            }
+        }
+        this.setState({discplinas:tempDisciplina})
     }
 
 
