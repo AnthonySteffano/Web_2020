@@ -1,0 +1,31 @@
+{
+  "estudantes": [
+    {
+      "id": 1,
+      "nome": "Jefferson",
+      "curso": "SI",
+      "IRA": 9
+    },
+    {
+      "id": 2,
+      "nome": "Thomas",
+      "curso": "SI",
+      "IRA": 7.5
+    },
+    {
+      "nome": "Anthony",
+      "curso": "SI",
+      "id": 3
+    },
+    {
+      "nome": "ze",
+      "curso": "si",
+      "id": 4
+    },
+    {
+      "nome": "fulano",
+      "curso": "eng. computacao",
+      "id": 5
+    }
+  ]
+}
