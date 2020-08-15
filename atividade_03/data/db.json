@@ -1,22 +1,16 @@
 {
   "disciplina": [
     {
-      "id": 1,
-      "nome": "ES",
-      "curso": "SI",
-      "Capacidade": 54
-    },
-    {
       "nome": "POO",
       "curso": "SI",
-      "capacidade": "40",
-      "id": 2
+      "capacidade": "50",
+      "id": 1
     },
     {
-      "nome": "teste",
-      "curso": "teste",
-      "capacidade": "23",
-      "id": 3
+      "nome": "WEB",
+      "curso": "ES",
+      "capacidade": "32",
+      "id": 2
     }
   ]
 }
