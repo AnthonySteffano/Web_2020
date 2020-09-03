@@ -11,7 +11,8 @@ export default class List extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/disciplina')
+    //    axios.get('http://localhost:3001/disciplina') //json-server
+       axios.get('http://localhost:3002/disciplinas/list') //express
             .then(
                 (res) => {
                     this.setState({ discplinas: res.data })
@@ -34,7 +35,7 @@ export default class List extends Component {
     apagarElementoPorId(id){
         let tempDisciplina = this.setState.discplinas
         for(let i=0;i<tempDisciplina.length;i++){
-            if(tempDisciplina[i].id === id){
+            if(tempDisciplina[i]._id === id){
                 tempDisciplina.splice(i,1)
             }
         }
