@@ -3,8 +3,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+require('./db/MongoDBConn')
+
 var users = require('./routes/users');
-var DisciplinaRoute = require('./routes/DisciplinaRoutes')
+var Disciplina = require('./routes/DisciplinaRoutes2')
 
 var app = express();
 
@@ -21,6 +23,6 @@ app.use(function(req, res, next) {
 
 
 app.use('/api/v1/users', users);
-app.use('/disciplinas',DisciplinaRoute)
+app.use('/disciplinas',Disciplina)
 
 module.exports = app;

@@ -44,6 +44,7 @@ export default class Edit extends Component {
 
     onSubmit(e) {
         e.preventDefault()
+        
         const DisciplinaEditada = {nome:this.state.nome,
                                curso:this.state.curso,
                                capacidade:this.state.capacidade}
