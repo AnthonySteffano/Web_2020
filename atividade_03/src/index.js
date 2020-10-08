@@ -5,11 +5,18 @@ import {BrowserRouter} from 'react-router-dom';
 import './index.css';
 import App from './App';
 
+import Firebase from './utils/Firebase'
+import FirebaseContext from './utils/FirebaseContext'
+
 
 ReactDOM.render(
-  <BrowserRouter>
+  <FirebaseContext.Provider value={new Firebase()}>
+<BrowserRouter>
     <App />
-  </BrowserRouter>,
+  </BrowserRouter>
+  </FirebaseContext.Provider>
+ 
+  ,
   document.getElementById('root')
 );
 

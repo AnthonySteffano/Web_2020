@@ -1,46 +1,69 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+
 import TableRow from './TableRow'
-export default class List extends Component {
+import FirebaseContext from '../utils/FirebaseContext'
+
+const ListPage = () =>(
+    <FirebaseContext.Consumer>
+    { contexto => <List firebase={contexto} />}
+    </FirebaseContext.Consumer>
+)
+
+//ListPage
+
+ class List extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { discplinas: [] }
-        this.apagarElementoPorId = this.apagarElementoPorId.bind(this)
+        this.state = { disciplinas: [] }
+       // this.apagarElementoPorId = this.apagarElementoPorId.bind(this)
 
     }
 
     componentDidMount() {
-    //    axios.get('http://localhost:3001/disciplina') //json-server
-       axios.get('http://localhost:3002/disciplinas/list') //express
-            .then(
-                (res) => {
-                    this.setState({ discplinas: res.data })
-                }
-            )
-            .catch((error => {
-                console.log(error)
-            }))
+        this.ref = this.props.firebase.getFirestore().collection('disciplinas')
+        this.ref.onSnapshot(this.alimentarDisciplinas.bind(this))
+    }
+
+    alimentarDisciplinas(query){
+        let disciplinas = []
+        query.forEach(
+            (doc)=>{
+                const {nome,curso,capacidade} = doc.data()
+                disciplinas.push(
+                    {
+                        _id: doc.id,
+                        nome,
+                        curso,
+                        capacidade,
+                    }
+                )//push
+
+            }//doc
+        )//forEach
+        this.setState({disciplinas})
     }
 
     montarTabela() {
-        if (!this.state.discplinas) return
-        return this.state.discplinas.map(
+        if (!this.state.disciplinas) return
+        return this.state.disciplinas.map(
             (dis, i) => {
-                return <TableRow disciplina={dis} key={i} apagarElementoPorId={this.apagarElementoPorId}  />
+                return <TableRow disciplina={dis} key={i} 
+                firebase = {this.props.firebase}
+                />
             }
         )
     }
 
-    apagarElementoPorId(id){
-        let tempDisciplina = this.setState.discplinas
-        for(let i=0;i<tempDisciplina.length;i++){
-            if(tempDisciplina[i]._id === id){
-                tempDisciplina.splice(i,1)
-            }
-        }
-        this.setState({discplinas:tempDisciplina})
-    }
+    // apagarElementoPorId(id){
+    //     let tempDisciplina = this.setState.disciplinas
+    //     for(let i=0;i<tempDisciplina.length;i++){
+    //         if(tempDisciplina[i]._id === id){
+    //             tempDisciplina.splice(i,1)
+    //         }
+    //     }
+    //     this.setState({disciplinas:tempDisciplina})
+    // }
 
 
     render() {
@@ -67,3 +90,5 @@ export default class List extends Component {
         )
     }
 }
+
+export default ListPage
