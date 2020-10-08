@@ -24,6 +24,7 @@ export default class TableRow extends Component {
         // .then(
         //     (res)=>this.props.apagarElementoPorId(this.props.disciplina._id))
         // .catch(error=>console.log(error))
+        //apagar dps
 
    
 
