@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import{Link} from 'react-router-dom'
+import FirebaseService from '../services/FirebaseService'
 
 
 export default class TableRow extends Component {
@@ -13,9 +14,18 @@ export default class TableRow extends Component {
        
         let res = window.confirm(`Deseja apagar ${nome}?`)
         if(res){
-            this.props.firebase.getFirestore().collection('disciplinas').doc(id).delete()
-            .then(()=>console.log(`${nome} apagado.`))
-            .catch(error =>console.log(error))
+            // this.props.firebase.getFirestore().collection('disciplinas').doc(id).delete()
+            // .then(()=>console.log(`${nome} apagado.`))
+            // .catch(error =>console.log(error))
+
+            FirebaseService.delete(
+                this.props.firebase.getFirestore(),
+                (mensagem)=>{
+                    if(mensagem==='ok')
+                    console.log(`${nome} apagado`)
+                },
+                id
+            )
         }
 
     }

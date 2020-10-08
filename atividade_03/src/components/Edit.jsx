@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import FirebaseContext from '../utils/FirebaseContext'
+import FirebaseService from '../services/FirebaseService'
+
 
 const EditPage =(props) =>(
     <FirebaseContext.Consumer>
@@ -22,17 +24,17 @@ const EditPage =(props) =>(
     }
     componentDidMount(){
         
-        this.props.firebase.getFirestore().collection('disciplinas').doc(this.props.id).get()
-        .then(
-            (doc)=>{
-                this.setState({
-                    nome: doc.data().nome,
-                    curso: doc.data().curso,
-                    capacidade: doc.data().capacidade
-                })
-            }
-        )
-        .catch(error=>console.log(error))
+        FirebaseService.retrieve(this.props.firebase.getFirestore(),
+        (disciplina)=>{
+            if(disciplina)
+            this.setState({
+                nome:disciplina.nome,
+                curso: disciplina.curso,
+                capacidade: disciplina.capacidade
+            })
+
+            },this.props.id
+         )
     }
 
     setNome(e) {
@@ -50,31 +52,21 @@ const EditPage =(props) =>(
     onSubmit(e) {
         e.preventDefault()
 
-        this.props.firebase.getFirestore().collection('disciplinas').doc(this.props.id).set(
-            {
-            nome: this.state.nome,
-            curso: this.state.curso,
-            capacidade: this.state.capacidade
-            }
-        )
+        const disciplina = {
+            nome: this.state.nome, 
+            curso: this.state.curso, 
+            capacidade: this.state.capacidade}
 
-        .then(()=>{
-            console.log('Estudante atualizado')
-        })
-        .catch(error=>console.log(console.error()))
-        
-        // const DisciplinaEditada = {nome:this.state.nome,
-        //                        curso:this.state.curso,
-        //                        capacidade:this.state.capacidade}
+       FirebaseService.edit(
+           this.props.firebase.getFirestore(),
+           (messagem)=>{
+            if(messagem==='ok') console.log(`Disciplina $(disciplina.nome) atualizado!`)
+           },
+           disciplina,
+           this.props.id
+       )
 
-        // // axios.put("http://localhost:3001/disciplina/"+ this.props.match.params.id,DisciplinaEditada)
-        // axios.put("http://localhost:3002/disciplinas/update/"+ this.props.match.params.id, DisciplinaEditada)
-        // .then(res=>{
-        //     //console.log(res.data)
-        //     this.props.history.push('/list')
-        // })
-        // .catch(error=>console.log(error))
-
+       this.setState({ nome: '', curso: '', capacidade: ''})
     }
 
     render() {

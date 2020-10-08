@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import TableRow from './TableRow'
 import FirebaseContext from '../utils/FirebaseContext'
+import FirebaseService from '../services/FirebaseService'
 
 const ListPage = () =>(
     <FirebaseContext.Consumer>
@@ -15,34 +16,31 @@ const ListPage = () =>(
 
     constructor(props) {
         super(props)
+        this._isMounted = false //para saber se está montado ou não
         this.state = { disciplinas: [] }
        // this.apagarElementoPorId = this.apagarElementoPorId.bind(this)
 
     }
 
     componentDidMount() {
-        this.ref = this.props.firebase.getFirestore().collection('disciplinas')
-        this.ref.onSnapshot(this.alimentarDisciplinas.bind(this))
-    }
-
-    alimentarDisciplinas(query){
-        let disciplinas = []
-        query.forEach(
-            (doc)=>{
-                const {nome,curso,capacidade} = doc.data()
-                disciplinas.push(
-                    {
-                        _id: doc.id,
-                        nome,
-                        curso,
-                        capacidade,
+        this._isMounted = true;
+       
+        FirebaseService.list(
+            this.props.firebase.getFirestore(),
+            (disciplinas)=>{
+                if(disciplinas){
+                    if(this._isMounted){
+                        this.setState({disciplinas})
                     }
-                )//push
-
-            }//doc
-        )//forEach
-        this.setState({disciplinas})
+                }
+            }
+        )
     }
+
+    componentWillUnmount(){
+        this._isMounted = false
+    }
+
 
     montarTabela() {
         if (!this.state.disciplinas) return
@@ -54,16 +52,6 @@ const ListPage = () =>(
             }
         )
     }
-
-    // apagarElementoPorId(id){
-    //     let tempDisciplina = this.setState.disciplinas
-    //     for(let i=0;i<tempDisciplina.length;i++){
-    //         if(tempDisciplina[i]._id === id){
-    //             tempDisciplina.splice(i,1)
-    //         }
-    //     }
-    //     this.setState({disciplinas:tempDisciplina})
-    // }
 
 
     render() {
